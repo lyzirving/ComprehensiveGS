@@ -30,60 +30,6 @@
 		"version": "2.0.0",
 		"tasks": [
 			{
-				"label": "ComprehensiveGS Win64 Debug Build",
-				"group": "build",
-				"command": "Engine\\Build\\BatchFiles\\Build.bat",
-				"args": [
-					"ComprehensiveGS",
-					"Win64",
-					"Debug",
-					"F:\\Unreal Projects\\ComprehensiveGS\\ComprehensiveGS.uproject",
-					"-waitmutex"
-				],
-				"problemMatcher": "$msCompile",
-				"type": "shell",
-				"options": {
-					"cwd": "F:\\Epic Games\\UE_5.8"
-				}
-			},
-			{
-				"label": "ComprehensiveGS Win64 Debug Rebuild",
-				"group": "build",
-				"command": "Engine\\Build\\BatchFiles\\Build.bat",
-				"args": [
-					"ComprehensiveGS",
-					"Win64",
-					"Debug",
-					"F:\\Unreal Projects\\ComprehensiveGS\\ComprehensiveGS.uproject",
-					"-waitmutex"
-				],
-				"problemMatcher": "$msCompile",
-				"dependsOn": [
-					"ComprehensiveGS Win64 Debug Clean"
-				],
-				"type": "shell",
-				"options": {
-					"cwd": "F:\\Epic Games\\UE_5.8"
-				}
-			},
-			{
-				"label": "ComprehensiveGS Win64 Debug Clean",
-				"group": "build",
-				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
-				"args": [
-					"ComprehensiveGS",
-					"Win64",
-					"Debug",
-					"F:\\Unreal Projects\\ComprehensiveGS\\ComprehensiveGS.uproject",
-					"-waitmutex"
-				],
-				"problemMatcher": "$msCompile",
-				"type": "shell",
-				"options": {
-					"cwd": "F:\\Epic Games\\UE_5.8"
-				}
-			},
-			{
 				"label": "ComprehensiveGS Win64 DebugGame Build",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
@@ -300,60 +246,6 @@
 				}
 			},
 			{
-				"label": "ComprehensiveGSEditor Win64 Debug Build",
-				"group": "build",
-				"command": "Engine\\Build\\BatchFiles\\Build.bat",
-				"args": [
-					"ComprehensiveGSEditor",
-					"Win64",
-					"Debug",
-					"F:\\Unreal Projects\\ComprehensiveGS\\ComprehensiveGS.uproject",
-					"-waitmutex"
-				],
-				"problemMatcher": "$msCompile",
-				"type": "shell",
-				"options": {
-					"cwd": "F:\\Epic Games\\UE_5.8"
-				}
-			},
-			{
-				"label": "ComprehensiveGSEditor Win64 Debug Rebuild",
-				"group": "build",
-				"command": "Engine\\Build\\BatchFiles\\Build.bat",
-				"args": [
-					"ComprehensiveGSEditor",
-					"Win64",
-					"Debug",
-					"F:\\Unreal Projects\\ComprehensiveGS\\ComprehensiveGS.uproject",
-					"-waitmutex"
-				],
-				"problemMatcher": "$msCompile",
-				"dependsOn": [
-					"ComprehensiveGSEditor Win64 Debug Clean"
-				],
-				"type": "shell",
-				"options": {
-					"cwd": "F:\\Epic Games\\UE_5.8"
-				}
-			},
-			{
-				"label": "ComprehensiveGSEditor Win64 Debug Clean",
-				"group": "build",
-				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
-				"args": [
-					"ComprehensiveGSEditor",
-					"Win64",
-					"Debug",
-					"F:\\Unreal Projects\\ComprehensiveGS\\ComprehensiveGS.uproject",
-					"-waitmutex"
-				],
-				"problemMatcher": "$msCompile",
-				"type": "shell",
-				"options": {
-					"cwd": "F:\\Epic Games\\UE_5.8"
-				}
-			},
-			{
 				"label": "ComprehensiveGSEditor Win64 DebugGame Build",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
@@ -467,25 +359,6 @@
 		"version": "0.2.0",
 		"configurations": [
 			{
-				"name": "Launch ComprehensiveGS (Debug)",
-				"request": "launch",
-				"program": "F:\\Unreal Projects\\ComprehensiveGS\\Binaries\\Win64\\UnrealGame-Win64-Debug.exe",
-				"preLaunchTask": "ComprehensiveGS Win64 Debug Build",
-				"args": [
-				],
-				"cwd": "F:\\Epic Games\\UE_5.8",
-				"stopAtEntry": false,
-				"console": "integratedTerminal",
-				"type": "cppvsdbg",
-				"visualizerFile": "F:\\Epic Games\\UE_5.8\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
-				"sourceFileMap": {
-					"D:\\build\\++UE5\\Sync": "F:\\Epic Games\\UE_5.8"
-				},
-				"sourceMap": {
-					"D:\\build\\++UE5\\Sync": "F:\\Epic Games\\UE_5.8"
-				}
-			},
-			{
 				"name": "Launch ComprehensiveGS (DebugGame)",
 				"request": "launch",
 				"program": "F:\\Unreal Projects\\ComprehensiveGS\\Binaries\\Win64\\UnrealGame-Win64-DebugGame.exe",
@@ -548,26 +421,6 @@
 				"program": "F:\\Unreal Projects\\ComprehensiveGS\\Binaries\\Win64\\UnrealGame-Win64-Shipping.exe",
 				"preLaunchTask": "ComprehensiveGS Win64 Shipping Build",
 				"args": [
-				],
-				"cwd": "F:\\Epic Games\\UE_5.8",
-				"stopAtEntry": false,
-				"console": "integratedTerminal",
-				"type": "cppvsdbg",
-				"visualizerFile": "F:\\Epic Games\\UE_5.8\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
-				"sourceFileMap": {
-					"D:\\build\\++UE5\\Sync": "F:\\Epic Games\\UE_5.8"
-				},
-				"sourceMap": {
-					"D:\\build\\++UE5\\Sync": "F:\\Epic Games\\UE_5.8"
-				}
-			},
-			{
-				"name": "Launch ComprehensiveGSEditor (Debug)",
-				"request": "launch",
-				"program": "F:\\Epic Games\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-Debug.exe",
-				"preLaunchTask": "ComprehensiveGSEditor Win64 Debug Build",
-				"args": [
-					"F:\\Unreal Projects\\ComprehensiveGS\\ComprehensiveGS.uproject"
 				],
 				"cwd": "F:\\Epic Games\\UE_5.8",
 				"stopAtEntry": false,

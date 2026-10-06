@@ -1,10 +1,9 @@
+/.cache
 /.git
 /.vscode
 /Content
 /DerivedDataCache
 /Intermediate
 /Saved
-/Plugins/ALS-Refactored/.git
-/Plugins/ALS-Refactored/.github
 /Plugins/ALS-Refactored/Content
 /Plugins/ALS-Refactored/Intermediate

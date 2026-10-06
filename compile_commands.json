@@ -1,0 +1,440 @@
+[
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/Module.ComprehensiveGS.gen.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/Module.ComprehensiveGS.gen.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/Module.ComprehensiveGS.gen.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/PerModuleInline.gen.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/PerModuleInline.gen.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/PerModuleInline.gen.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/Module.ALSCamera.gen.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/Module.ALSCamera.gen.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/Module.ALSCamera.gen.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/PerModuleInline.gen.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/PerModuleInline.gen.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/PerModuleInline.gen.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/Module.ALSEditor.gen.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/Module.ALSEditor.gen.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/Module.ALSEditor.gen.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/PerModuleInline.gen.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/PerModuleInline.gen.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/PerModuleInline.gen.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSExtras/Module.ALSExtras.gen.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSExtras/Module.ALSExtras.gen.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSExtras/Module.ALSExtras.gen.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSExtras/PerModuleInline.gen.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSExtras/PerModuleInline.gen.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSExtras/PerModuleInline.gen.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/Module.ALS.gen.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/Module.ALS.gen.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/Module.ALS.gen.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/PerModuleInline.gen.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/PerModuleInline.gen.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/PerModuleInline.gen.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSCamera/Private/AlsCameraAnimationInstance.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/AlsCameraAnimationInstance.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/AlsCameraAnimationInstance.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSCamera/Private/AlsCameraComponent.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/AlsCameraComponent.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/AlsCameraComponent.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSCamera/Private/AlsCameraComponent_Debug.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/AlsCameraComponent_Debug.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/AlsCameraComponent_Debug.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSCamera/Private/AlsCameraModule.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/AlsCameraModule.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/AlsCameraModule.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSCamera/Private/AlsCameraSettings.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/AlsCameraSettings.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/AlsCameraSettings.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSCamera/Private/Notifies/AlsAnimNotify_CameraShake.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/AlsAnimNotify_CameraShake.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSCamera/AlsAnimNotify_CameraShake.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSEditor/Private/AlsEditorModule.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsEditorModule.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsEditorModule.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSEditor/Private/AlsSkeletonUtility.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsSkeletonUtility.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsSkeletonUtility.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSEditor/Private/Modifiers/AlsAnimationModifier_CalculateRotationYawSpeed.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsAnimationModifier_CalculateRotationYawSpeed.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsAnimationModifier_CalculateRotationYawSpeed.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSEditor/Private/Modifiers/AlsAnimationModifier_CopyCurves.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsAnimationModifier_CopyCurves.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsAnimationModifier_CopyCurves.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSEditor/Private/Modifiers/AlsAnimationModifier_CreateCurves.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsAnimationModifier_CreateCurves.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsAnimationModifier_CreateCurves.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSEditor/Private/Modifiers/AlsAnimationModifier_CreateLayeringCurves.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsAnimationModifier_CreateLayeringCurves.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsAnimationModifier_CreateLayeringCurves.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSEditor/Private/Nodes/AlsAnimGraphNode_CurvesBlend.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsAnimGraphNode_CurvesBlend.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsAnimGraphNode_CurvesBlend.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSEditor/Private/Nodes/AlsAnimGraphNode_GameplayTagsBlend.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsAnimGraphNode_GameplayTagsBlend.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSEditor/AlsAnimGraphNode_GameplayTagsBlend.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSExtras/Private/AlsAIController.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSExtras/AlsAIController.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSExtras/AlsAIController.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSExtras/Private/AlsCharacterExample.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSExtras/AlsCharacterExample.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSExtras/AlsCharacterExample.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALSExtras/Private/AlsExtrasModule.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSExtras/AlsExtrasModule.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALSExtras/AlsExtrasModule.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/AlsAnimationInstance.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimationInstance.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimationInstance.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/AlsAnimationInstanceProxy.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimationInstanceProxy.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimationInstanceProxy.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/AlsCharacter.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsCharacter.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsCharacter.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/AlsCharacterMovementComponent.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsCharacterMovementComponent.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsCharacterMovementComponent.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/AlsCharacter_Actions.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsCharacter_Actions.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsCharacter_Actions.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/AlsCharacter_Debug.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsCharacter_Debug.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsCharacter_Debug.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/AlsLinkedAnimationInstance.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsLinkedAnimationInstance.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsLinkedAnimationInstance.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/AlsModule.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsModule.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsModule.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Nodes/AlsAnimNode_CurvesBlend.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNode_CurvesBlend.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNode_CurvesBlend.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Nodes/AlsAnimNode_GameplayTagsBlend.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNode_GameplayTagsBlend.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNode_GameplayTagsBlend.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Nodes/AlsRigUnit_ApplyFootOffsetLocation.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnit_ApplyFootOffsetLocation.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnit_ApplyFootOffsetLocation.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Nodes/AlsRigUnit_ApplyFootOffsetRotation.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnit_ApplyFootOffsetRotation.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnit_ApplyFootOffsetRotation.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Nodes/AlsRigUnit_ChainLength.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnit_ChainLength.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnit_ChainLength.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Nodes/AlsRigUnit_DistributeRotationSimple.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnit_DistributeRotationSimple.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnit_DistributeRotationSimple.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Nodes/AlsRigUnit_FootOffsetTrace.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnit_FootOffsetTrace.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnit_FootOffsetTrace.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Nodes/AlsRigUnit_HandIkRetargeting.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnit_HandIkRetargeting.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnit_HandIkRetargeting.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Nodes/AlsRigUnits.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnits.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRigUnits.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Notifies/AlsAnimNotifyState_EarlyBlendOut.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNotifyState_EarlyBlendOut.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNotifyState_EarlyBlendOut.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Notifies/AlsAnimNotifyState_SetLocomotionAction.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNotifyState_SetLocomotionAction.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNotifyState_SetLocomotionAction.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Notifies/AlsAnimNotifyState_SetRootMotionScale.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNotifyState_SetRootMotionScale.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNotifyState_SetRootMotionScale.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Notifies/AlsAnimNotify_FootstepEffects.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNotify_FootstepEffects.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNotify_FootstepEffects.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Notifies/AlsAnimNotify_SetGroundedEntryMode.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNotify_SetGroundedEntryMode.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimNotify_SetGroundedEntryMode.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/RootMotionSources/AlsRootMotionSource_Mantling.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRootMotionSource_Mantling.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsRootMotionSource_Mantling.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Settings/AlsAnimationInstanceSettings.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimationInstanceSettings.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsAnimationInstanceSettings.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Settings/AlsCharacterSettings.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsCharacterSettings.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsCharacterSettings.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Settings/AlsInAirSettings.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsInAirSettings.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsInAirSettings.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Settings/AlsMantlingSettings.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsMantlingSettings.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsMantlingSettings.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Utility/AlsDebugUtility.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsDebugUtility.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsDebugUtility.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Utility/AlsGameplayTags.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsGameplayTags.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsGameplayTags.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Utility/AlsLog.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsLog.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsLog.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Utility/AlsMacros.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsMacros.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsMacros.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Utility/AlsMath.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsMath.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsMath.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Utility/AlsMontageUtility.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsMontageUtility.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsMontageUtility.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Utility/AlsUtility.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsUtility.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsUtility.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Source/ALS/Private/Utility/AlsVector.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsVector.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Plugins/ALS-Refactored/Intermediate/Build/Win64/x64/UnrealEditor/Development/ALS/AlsVector.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Source/ComprehensiveGS/ComprehensiveGS.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/ComprehensiveGS.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/ComprehensiveGS.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Source/ComprehensiveGS/Private/LlsAnimationInstance.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsAnimationInstance.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsAnimationInstance.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Source/ComprehensiveGS/Private/LlsAnimationInstanceProxy.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsAnimationInstanceProxy.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsAnimationInstanceProxy.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Source/ComprehensiveGS/Private/LlsCharacter.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsCharacter.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsCharacter.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Source/ComprehensiveGS/Private/LlsCharacterInstance.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsCharacterInstance.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsCharacterInstance.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Source/ComprehensiveGS/Private/LlsCharacterMovementComponent.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsCharacterMovementComponent.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsCharacterMovementComponent.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Source/ComprehensiveGS/Private/LlsLinkedAnimationInstance.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsLinkedAnimationInstance.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsLinkedAnimationInstance.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Source/ComprehensiveGS/Private/Settings/LlsAnimationInstanceSettings.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsAnimationInstanceSettings.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsAnimationInstanceSettings.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Source/ComprehensiveGS/Private/Settings/LlsCharacterSettings.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsCharacterSettings.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsCharacterSettings.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Source/ComprehensiveGS/Private/Utility/LlsGameplayTags.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsGameplayTags.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/LlsGameplayTags.cpp.obj"
+	},
+	{
+		"file": "F:/Unreal Projects/ComprehensiveGS/Source/ComprehensiveGS/Private/Utility/VectorExtension.cpp",
+		"command": "E:/VisualStudio/2026/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe @\"F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/VectorExtension.cpp.obj.rsp\" ",
+		"directory": "F:/Epic Games/UE_5.8/Engine/Source",
+		"output": "F:/Unreal Projects/ComprehensiveGS/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComprehensiveGS/VectorExtension.cpp.obj"
+	}
+]
