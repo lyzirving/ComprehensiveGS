@@ -68,6 +68,9 @@ public:
 	void SetDesiredGait(FGameplayTag NewDesiredGait);
 
 protected:
+	virtual void RefreshRotation(float DeltaTime);
+
+protected:
 	void SetGait(FGameplayTag NewGait);
 
 	void SetInputDirection(FVector NewInputDirection);

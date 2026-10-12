@@ -3,6 +3,7 @@
 #include "Engine/DataAsset.h"
 
 #include "Settings/LlsGeneralAnimationSettings.h"
+#include "Settings/LlsStandingSettings.h"
 
 #include "LlsAnimationInstanceSettings.generated.h"
 
@@ -14,4 +15,7 @@ class COMPREHENSIVEGS_API ULlsAnimationInstanceSettings : public UDataAsset
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings")
 	FLlsGeneralAnimationSettings General;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings")
+	FLlsStandingSettings Standing;
 };

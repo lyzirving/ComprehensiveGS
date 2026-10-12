@@ -33,8 +33,12 @@ void ALlsCharacter::BeginPlay()
 void ALlsCharacter::Tick(float DeltaTime)
 {	
 	RefreshLocomotionEarly();
-	RefreshLocomotion();	
+	// calculate value first, then gait.
+	RefreshLocomotion();
+
 	RefreshGait();
+
+	RefreshRotation(DeltaTime);
 
 	Super::Tick(DeltaTime);
 	
@@ -55,6 +59,11 @@ void ALlsCharacter::SetDesiredGait(FGameplayTag NewDesiredGait)
 	}
 
 	DesiredGait = NewDesiredGait;
+}
+
+void ALlsCharacter::RefreshRotation(float DeltaTime)
+{
+	//TODO
 }
 
 void ALlsCharacter::RefreshLocomotionEarly()
@@ -157,6 +166,9 @@ FGameplayTag ALlsCharacter::CalculateMaxAllowedGait() const
 
 FGameplayTag ALlsCharacter::CalculateActualGait(FGameplayTag MaxAllowedGait) const
 {
+	// Calculate the new gait. This is calculated by the actual movement of the character and so it can be
+	// different from the desired gait or max allowed gait. For instance, if the max allowed gait becomes
+	// walking, the new gait will still be running until the character decelerates to the walking speed.
 	const auto& GaitSettings = LlsCharacterMovement->GetGaitSettings();
 
 	if (LocomotionState.Speed < GaitSettings.GetMaxWalkSpeed() + 10.0f)

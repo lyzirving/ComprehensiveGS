@@ -1,8 +1,17 @@
 #include "LlsAnimationInstance.h"
 #include "LlsCharacter.h"
 #include "LlsCharacterMovementComponent.h"
+#include "LlsAnimationInstanceProxy.h"
+
+#include "Utility/LlsConstants.h"
+#include "Utility/LlsMath.h"
+#include "Utility/LlsGameplayTags.h"
+#include "Utility/LlsPrivateMemberAccessor.h"
+
 #include "Settings/LlsAnimationInstanceSettings.h"
 
+#include "Animation/AnimCurveTypes.h"
+#include "Animation/AnimInstance.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Curves/CurveFloat.h"
@@ -11,8 +20,12 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/WorldSettings.h"
 #include "Math/SpringMath.h"
+#include "Utility/VectorExtension.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(LlsAnimationInstance)
+
+LLS_DEFINE_PRIVATE_MEMBER_ACCESSOR(LlsGetAnimationCurvesAccessor, &FAnimInstanceProxy::GetAnimationCurves,
+                                   const TMap<FName, float>& (FAnimInstanceProxy::*)(EAnimCurveType) const)
 
 void ULlsAnimationInstance::NativeInitializeAnimation()
 {
@@ -33,20 +46,6 @@ void ULlsAnimationInstance::NativeUpdateAnimation(float DeltaTime)
     Gait = Character->GetGait();
 
     RefreshLocomotionOnGameThread();
-}
-
-void ULlsAnimationInstance::NativeThreadSafeUpdateAnimation(float DeltaTime)
-{
-    Super::NativeThreadSafeUpdateAnimation(DeltaTime);
-
-    if (!IsValid(Settings) || !IsValid(Character))
-    {
-        return;
-    }
-}
-
-void ULlsAnimationInstance::NativePostUpdateAnimation()
-{
 }
 
 void ULlsAnimationInstance::RefreshLocomotionOnGameThread()
@@ -100,7 +99,6 @@ void ULlsAnimationInstance::RefreshLocomotionOnGameThread()
 	const auto& ActorTransform{Proxy.GetActorTransform()};
 	const auto& ComponentTransformActorSpace{Proxy.GetComponentRelativeTransform()};
 
-    //TODO
     LocomotionState.LocationWorldSpace = ActorTransform.GetLocation();
 	LocomotionState.RotationWorldSpace = ActorTransform.Rotator();
 	LocomotionState.RotationQuaternionWorldSpace = ActorTransform.GetRotation();
@@ -116,4 +114,157 @@ void ULlsAnimationInstance::RefreshLocomotionOnGameThread()
 
 	LocomotionState.CapsuleRadius = Capsule->GetScaledCapsuleRadius();
 	LocomotionState.CapsuleHalfHeight = Capsule->GetScaledCapsuleHalfHeight();
+}
+
+void ULlsAnimationInstance::NativeThreadSafeUpdateAnimation(float DeltaTime)
+{
+    Super::NativeThreadSafeUpdateAnimation(DeltaTime);
+
+    if (!IsValid(Settings) || !IsValid(Character))
+    {
+        return;
+    }
+
+	RefreshPose();
+	RefreshStandingMovement();
+}
+
+void ULlsAnimationInstance::NativePostUpdateAnimation()
+{
+}
+
+void ULlsAnimationInstance::RefreshPose()
+{       
+	// The game will crash when using commented code below
+	// Todo: why crash?
+	//const auto& AnimationCurves = UAnimInstance::GetAnimationCurves(EAnimCurveType::AttributeCurve);
+	
+	const auto& AnimationCurves{
+		LlsGetAnimationCurvesAccessor::Access(GetProxyOnAnyThread<FAnimInstanceProxy>(), EAnimCurveType::AttributeCurve)
+	};
+	
+    static const auto GetCurveValue{
+		[](const TMap<FName, float>& Curves, const FName CurveName, float DefaultValue = 0.f) -> float
+		{
+			const auto* Value{Curves.Find(CurveName)};
+
+			return Value != nullptr ? *Value : DefaultValue;
+		}
+	};
+
+	PoseState.GroundedAmount = GetCurveValue(AnimationCurves, ULlsConstants::PoseGroundedCurveName());
+	PoseState.InAirAmount = GetCurveValue(AnimationCurves, ULlsConstants::PoseInAirCurveName());
+
+	PoseState.StandingAmount = GetCurveValue(AnimationCurves, ULlsConstants::PoseStandingCurveName());
+	PoseState.CrouchingAmount = GetCurveValue(AnimationCurves, ULlsConstants::PoseCrouchingCurveName());
+
+	PoseState.MovingAmount = GetCurveValue(AnimationCurves, ULlsConstants::PoseMovingCurveName());
+
+	PoseState.GaitAmount = FMath::Clamp(GetCurveValue(AnimationCurves, ULlsConstants::PoseGaitCurveName()), 0.0f, 3.0f);
+	PoseState.GaitWalkingAmount = ULlsMath::Clamp01(PoseState.GaitAmount);
+	PoseState.GaitRunningAmount = ULlsMath::Clamp01(PoseState.GaitAmount - 1.0f);
+	PoseState.GaitSprintingAmount = ULlsMath::Clamp01(PoseState.GaitAmount - 2.0f);
+
+	// Use the grounded pose curve value to "unweight" the gait pose curve. This is used to
+	// instantly get the full gait value from the very beginning of transitions to grounded states.
+
+	PoseState.UnweightedGaitAmount = PoseState.GroundedAmount > UE_SMALL_NUMBER
+		                                 ? PoseState.GaitAmount / PoseState.GroundedAmount
+		                                 : PoseState.GaitAmount;
+	
+	PoseState.UnweightedGaitWalkingAmount = ULlsMath::Clamp01(PoseState.UnweightedGaitAmount);
+	PoseState.UnweightedGaitRunningAmount = ULlsMath::Clamp01(PoseState.UnweightedGaitAmount - 1.0f);
+	PoseState.UnweightedGaitSprintingAmount = ULlsMath::Clamp01(PoseState.UnweightedGaitAmount - 2.0f);
+}
+
+void ULlsAnimationInstance::RefreshStandingMovement()
+{
+	if (!IsValid(Settings))
+	{
+		return;
+	}
+
+	const auto Speed{LocomotionState.Speed / LocomotionState.ScaleWorldSpace};
+
+	// Calculate the stride blend amount. This value is used within the blend spaces to scale the stride (distance feet travel)
+	// so that the character can walk or run at different movement speeds. It also allows the walk or run gait animations to
+	// blend independently while still matching the animation speed to the movement speed, preventing the character from needing
+	// to play a half walk + half run blend. The curves are used to map the stride amount to the speed for maximum control.
+
+	StandingState.StrideBlendAmount = FMath::Lerp(Settings->Standing.StrideBlendAmountWalkCurve->GetFloatValue(Speed),
+	                                              Settings->Standing.StrideBlendAmountRunCurve->GetFloatValue(Speed),
+	                                              PoseState.UnweightedGaitRunningAmount);
+
+	// Calculate the walk run blend amount. This value is used within the blend spaces to blend between walking and running.
+
+	StandingState.WalkRunBlendAmount = Gait == LlsGaitTags::Walking ? 0.0f : 1.0f;
+
+	// Calculate the standing play rate by dividing the character's speed by the animated speed for each gait.
+	// The interpolation is determined by the gait amount curve that exists on every locomotion cycle so that
+	// the play rate is always in sync with the currently blended animation. The value is also divided by the
+	// stride blend and the capsule scale so that the play rate increases as the stride or scale gets smaller.
+
+	// TODO Automatically calculate the play rate, such as is done in the UAnimDistanceMatchingLibrary::SetPlayrateToMatchSpeed() function.
+
+	const auto WalkRunSpeedAmount{
+		FMath::Lerp(Speed / Settings->Standing.AnimatedWalkSpeed,
+		            Speed / Settings->Standing.AnimatedRunSpeed,
+		            PoseState.UnweightedGaitRunningAmount)
+	};
+
+	const auto WalkRunSprintSpeedAmount{
+		FMath::Lerp(WalkRunSpeedAmount,
+		            Speed / Settings->Standing.AnimatedSprintSpeed,
+		            PoseState.UnweightedGaitSprintingAmount)
+	};
+
+	// Do not let the play rate be exactly zero, otherwise animation notifies
+	// may start to be triggered every frame until the play rate is changed.
+	// TODO Check the need for this hack in future engine versions.
+
+	StandingState.PlayRate = FMath::Clamp(WalkRunSprintSpeedAmount / StandingState.StrideBlendAmount, UE_KINDA_SMALL_NUMBER, 3.0f);
+		
+	StandingState.SprintBlockAmount = ULlsMath::Clamp01(GetCurveValue(ULlsConstants::SprintBlockCurveName()));
+
+	if (Gait != LlsGaitTags::Sprinting)
+	{
+		StandingState.SprintTime = 0.0f;
+		StandingState.SprintAccelerationAmount = 0.0f;
+		return;
+	}
+
+	// Set the sprint acceleration amount to zero if more than 0.5 seconds have elapsed since the
+	// start of the sprint. Otherwise, use the acceleration amount as the sprint acceleration amount.
+	// This ensures that the acceleration animation is applied only at the beginning of the sprint.
+
+	static constexpr auto SprintTimeThreshold{0.5f};
+
+	StandingState.SprintTime = bPendingUpdate
+		                           ? SprintTimeThreshold
+		                           : StandingState.SprintTime + GetDeltaSeconds();
+
+	StandingState.SprintAccelerationAmount = StandingState.SprintTime >= SprintTimeThreshold
+		                                         ? 0.0f
+		                                         : GetAccelerationAmount().X;
+}
+
+FVector2f ULlsAnimationInstance::GetAccelerationAmount() const
+{
+	// This value represents the current acceleration / deceleration. It is normalized to a range of -1 to 1, where
+	// -1 equals max braking deceleration and 1 equals max acceleration from the character movement component.
+
+	const auto MaxAcceleration{
+		(LocomotionState.AccelerationWorldSpace | LocomotionState.VelocityWorldSpace) >= 0.0f
+			? LocomotionState.MaxAcceleration
+			: LocomotionState.MaxBrakingDeceleration
+	};
+
+	if (MaxAcceleration <= UE_KINDA_SMALL_NUMBER)
+	{
+		return FVector2f::ZeroVector;
+	}
+
+	const FVector3f Acceleration{LocomotionState.RotationQuaternionWorldSpace.UnrotateVector(LocomotionState.AccelerationWorldSpace)};
+
+	return FVector2f{UVectorExtension::ClampMagnitude01(Acceleration / MaxAcceleration)};
 }

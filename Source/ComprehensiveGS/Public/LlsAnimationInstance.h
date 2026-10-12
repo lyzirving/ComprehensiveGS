@@ -58,6 +58,12 @@ public:
 
 	virtual void NativePostUpdateAnimation();
 
-private:
+private:	
 	void RefreshLocomotionOnGameThread();
+
+	void RefreshPose();
+
+	void RefreshStandingMovement();
+
+	FVector2f GetAccelerationAmount() const;
 };
