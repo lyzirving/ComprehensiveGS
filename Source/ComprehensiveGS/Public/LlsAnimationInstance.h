@@ -46,6 +46,8 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
 	FLlsStandingState StandingState;
 
+	// The gait the character is *actually* in, derived from the real movement speed.
+	// It can lag behind MaxAllowedGait while the character accelerates or decelerates.
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
 	FGameplayTag Gait{LlsGaitTags::Walking};
 

@@ -14,7 +14,7 @@ class COMPREHENSIVEGS_API ULlsCharacterMovementComponent : public UCharacterMove
 	GENERATED_BODY()
 	
 protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "State", Transient)
 	TObjectPtr<ULlsMovementSettings> MovementSettings;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
@@ -33,7 +33,7 @@ public:
 
 	void SetMaxAllowedGait(FGameplayTag NewMaxAllowedGait);
 
-private:
+public:
 	void UpdateMaxSpeed();
 };
 

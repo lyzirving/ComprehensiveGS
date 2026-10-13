@@ -135,10 +135,7 @@ void ULlsAnimationInstance::NativePostUpdateAnimation()
 
 void ULlsAnimationInstance::RefreshPose()
 {       
-	// The game will crash when using commented code below
-	// Todo: why crash?
-	//const auto& AnimationCurves = UAnimInstance::GetAnimationCurves(EAnimCurveType::AttributeCurve);
-	
+	// RefreshPose is called on Work thread, so we have to use GetProxyOnAnyThread.
 	const auto& AnimationCurves{
 		LlsGetAnimationCurvesAccessor::Access(GetProxyOnAnyThread<FAnimInstanceProxy>(), EAnimCurveType::AttributeCurve)
 	};
@@ -193,18 +190,11 @@ void ULlsAnimationInstance::RefreshStandingMovement()
 
 	StandingState.StrideBlendAmount = FMath::Lerp(Settings->Standing.StrideBlendAmountWalkCurve->GetFloatValue(Speed),
 	                                              Settings->Standing.StrideBlendAmountRunCurve->GetFloatValue(Speed),
-	                                              PoseState.UnweightedGaitRunningAmount);
+	                                              PoseState.UnweightedGaitRunningAmount);										  
 
 	// Calculate the walk run blend amount. This value is used within the blend spaces to blend between walking and running.
 
-	StandingState.WalkRunBlendAmount = Gait == LlsGaitTags::Walking ? 0.0f : 1.0f;
-
-	// Calculate the standing play rate by dividing the character's speed by the animated speed for each gait.
-	// The interpolation is determined by the gait amount curve that exists on every locomotion cycle so that
-	// the play rate is always in sync with the currently blended animation. The value is also divided by the
-	// stride blend and the capsule scale so that the play rate increases as the stride or scale gets smaller.
-
-	// TODO Automatically calculate the play rate, such as is done in the UAnimDistanceMatchingLibrary::SetPlayrateToMatchSpeed() function.
+	StandingState.WalkRunBlendAmount = Gait == LlsGaitTags::Walking ? 0.0f : 1.0f;	
 
 	const auto WalkRunSpeedAmount{
 		FMath::Lerp(Speed / Settings->Standing.AnimatedWalkSpeed,
@@ -218,9 +208,44 @@ void ULlsAnimationInstance::RefreshStandingMovement()
 		            PoseState.UnweightedGaitSprintingAmount)
 	};
 
-	// Do not let the play rate be exactly zero, otherwise animation notifies
-	// may start to be triggered every frame until the play rate is changed.
-	// TODO Check the need for this hack in future engine versions.
+	/// ---------------------------------------------------------------------------
+	/// Why PlayRate is computed the way it is
+	/// ---------------------------------------------------------------------------
+	///
+	/// A locomotion cycle is authored in place: it depicts a character moving forward
+	/// at AnimatedSpeed, but the root bone does not actually translate. During one
+	/// cycle of duration T, the depicted character would travel:
+	///
+	///     depicted distance per cycle = AnimatedSpeed * T            [cm]
+	///
+	/// The stride blend scales that distance, because the blend space mixes towards a
+	/// short-stride variant of the very same cycle:
+	///
+	///     depicted distance = AnimatedSpeed * T * s                  [cm]
+	///
+	/// Meanwhile the character is really being moved by the character movement
+	/// component at Speed. Playing the cycle at PlayRate p makes one cycle take
+	/// T / p seconds, so during one cycle the character actually travels:
+	///
+	///     actual distance = Speed * (T / p)                          [cm]
+	///
+	/// The feet only stay planted if the distance the animation depicts equals the
+	/// distance the character actually covers, so:
+	///
+	///     AnimatedSpeed * T * s = Speed * (T / p)
+	///
+	/// Cancelling T on both sides gives:
+	///
+	///     AnimatedSpeed * s = Speed / p
+	///
+	/// and solving for p:
+	///
+	///     p = Speed / (AnimatedSpeed * s)
+	///
+	/// which is exactly what this function computes:
+	///
+	///     PlayRate = WalkRunSprintSpeedAmount / StrideBlendAmount
+	///              = Speed / AnimatedSpeed / StrideBlendAmount
 
 	StandingState.PlayRate = FMath::Clamp(WalkRunSprintSpeedAmount / StandingState.StrideBlendAmount, UE_KINDA_SMALL_NUMBER, 3.0f);
 		

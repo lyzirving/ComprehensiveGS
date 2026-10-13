@@ -63,9 +63,7 @@ void ALlsCharacterInstance::RegisterInputMappingContext()
 void ALlsCharacterInstance::Input_OnMove(const FInputActionValue& ActionValue)
 {
 	const FVector2D InputVector = ActionValue.Get<FVector2D>();
-	SetInputDirection(FVector(InputVector.X, InputVector.Y, 0.0f));
-
-	UE_LOG(LogTemp, Display, TEXT("Move input received: %s"), *InputDirection.ToString());
+	SetInputDirection(FVector(InputVector.X, InputVector.Y, 0.0f));	
 
 	LocomotionState.bHasInput = !InputDirection.IsNearlyZero();
 	AddMovementInput(InputDirection, 1.0f, false);

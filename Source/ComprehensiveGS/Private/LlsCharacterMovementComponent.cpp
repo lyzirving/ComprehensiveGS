@@ -12,9 +12,6 @@ void ULlsCharacterMovementComponent::SetMovementSettings(ULlsMovementSettings* N
 
 void ULlsCharacterMovementComponent::UpdateMaxSpeed()
 {
-    if (!MovementSettings)
-        return;
-
     if (MaxAllowedGait == LlsGaitTags::Walking)
         MaxWalkSpeed = GaitSettings.GetMaxWalkSpeed();    
     else if (MaxAllowedGait == LlsGaitTags::Sprinting)

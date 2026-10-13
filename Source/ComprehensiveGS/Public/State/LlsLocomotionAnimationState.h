@@ -13,6 +13,8 @@ struct COMPREHENSIVEGS_API FLlsLocomotionAnimationState
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lls", Meta = (ClampMin = -180, ClampMax = 180, ForceUnits = "deg"))
 	float InputYawAngleWorldSpace{0.0f};
 
+	// Current horizontal movement speed of the character, in cm/s.
+	// Comes from the character movement component, not from the animation.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lls", Meta = (ClampMin = 0, ForceUnits = "cm/s"))
 	float Speed{0.0f};
 

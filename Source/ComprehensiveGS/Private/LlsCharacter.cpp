@@ -51,6 +51,16 @@ void ALlsCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
+void ALlsCharacter::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	
+	if(IsValid(LlsCharacterMovement))
+	{
+		LlsCharacterMovement->UpdateMaxSpeed();
+	}
+}
+
 void ALlsCharacter::SetDesiredGait(FGameplayTag NewDesiredGait)
 {
 	if (NewDesiredGait == DesiredGait)
@@ -87,7 +97,7 @@ void ALlsCharacter::RefreshLocomotion()
 	// character is moving, update the last velocity rotation. This value is saved because it might
 	// be useful to know the last orientation of a movement even after the character has stopped.
 
-	LocomotionState.Speed = UE_REAL_TO_FLOAT(LocomotionState.Velocity.Size2D());
+	LocomotionState.Speed = UE_REAL_TO_FLOAT(LocomotionState.Velocity.Size2D());	
 
 	static constexpr auto HasSpeedThreshold{1.0f};
 
