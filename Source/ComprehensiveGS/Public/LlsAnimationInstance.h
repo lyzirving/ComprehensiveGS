@@ -5,8 +5,10 @@
 
 #include "State/LlsLocomotionAnimationState.h"
 #include "State/LlsPoseState.h"
+#include "State/LlsViewAnimationState.h"
 #include "State/LlsStandingState.h"
 #include "State/LlsMovementBaseState.h"
+#include "State/LlsGroundedState.h"
 #include "Utility/LlsGameplayTags.h"
 
 #include "LlsAnimationInstance.generated.h"
@@ -38,13 +40,22 @@ protected:
 	FLlsLocomotionAnimationState LocomotionState;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
+	FLlsViewAnimationState ViewState;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
 	FLlsMovementBaseState MovementBase;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
 	FLlsPoseState PoseState;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
+	FLlsGroundedState GroundedState;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
 	FLlsStandingState StandingState;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
+	FGameplayTag RotationMode{LlsRotationModeTags::ViewDirection};
 
 	// The gait the character is *actually* in, derived from the real movement speed.
 	// It can lag behind MaxAllowedGait while the character accelerates or decelerates.
@@ -67,5 +78,15 @@ private:
 
 	void RefreshStandingMovement();
 
+	void RefreshGroundedMovement();
+
+	void RefreshMovementDirection(float VelocityYawAngleViewSpace);
+
+	void RefreshGrounded();
+
+	void RefreshVelocityBlend();
+
 	FVector2f GetAccelerationAmount() const;
+
+	FVector3f GetVelocity() const;
 };

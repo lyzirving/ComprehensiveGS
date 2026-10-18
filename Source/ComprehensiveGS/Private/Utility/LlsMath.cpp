@@ -38,3 +38,23 @@ bool ULlsMath::TryCalculatePoleVector(const FVector& ALocation, const FVector& B
 
 	return PoleDirection.Normalize(); // Direction will be zero and cannot be normalized if A, B and C are collinear.
 }
+
+ELlsMovementDirection ULlsMath::CalculateMovementDirection(const float Angle, const float ForwardHalfAngle, const float AngleThreshold)
+{
+	if (Angle >= -ForwardHalfAngle - AngleThreshold && Angle <= ForwardHalfAngle + AngleThreshold)
+	{
+		return ELlsMovementDirection::Forward;
+	}
+
+	if (Angle >= ForwardHalfAngle - AngleThreshold && Angle <= 180.0f - ForwardHalfAngle + AngleThreshold)
+	{
+		return ELlsMovementDirection::Right;
+	}
+
+	if (Angle <= -(ForwardHalfAngle - AngleThreshold) && Angle >= -(180.0f - ForwardHalfAngle + AngleThreshold))
+	{
+		return ELlsMovementDirection::Left;
+	}
+
+	return ELlsMovementDirection::Backward;
+}

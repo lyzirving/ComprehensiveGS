@@ -12,3 +12,10 @@ namespace LlsGaitTags
 	UE_DEFINE_GAMEPLAY_TAG(Running, FName{ANSITEXTVIEW("Lls.Gait.Running")})
 	UE_DEFINE_GAMEPLAY_TAG(Sprinting, FName{ANSITEXTVIEW("Lls.Gait.Sprinting")})
 }
+
+namespace LlsRotationModeTags
+{
+	UE_DEFINE_GAMEPLAY_TAG(VelocityDirection, FName{ANSITEXTVIEW("Lls.RotationMode.VelocityDirection")})
+	UE_DEFINE_GAMEPLAY_TAG(ViewDirection, FName{ANSITEXTVIEW("Lls.RotationMode.ViewDirection")})
+	UE_DEFINE_GAMEPLAY_TAG(Aiming, FName{ANSITEXTVIEW("Lls.RotationMode.Aiming")})
+}

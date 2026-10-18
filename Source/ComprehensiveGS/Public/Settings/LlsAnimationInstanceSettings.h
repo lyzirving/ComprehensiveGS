@@ -2,8 +2,9 @@
 
 #include "Engine/DataAsset.h"
 
-#include "Settings/LlsGeneralAnimationSettings.h"
-#include "Settings/LlsStandingSettings.h"
+#include "LlsGeneralAnimationSettings.h"
+#include "LlsStandingSettings.h"
+#include "LlsGroundedSettings.h"
 
 #include "LlsAnimationInstanceSettings.generated.h"
 
@@ -18,4 +19,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings")
 	FLlsStandingSettings Standing;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings")
+	FLlsGroundedSettings Grounded;
 };

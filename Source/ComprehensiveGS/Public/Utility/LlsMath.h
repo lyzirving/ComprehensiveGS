@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "State/LlsMovementDirection.h"
 #include "LlsMath.generated.h"
 
 USTRUCT(BlueprintType)
@@ -48,6 +49,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Lls|Math Utility", Meta = (ReturnDisplayName = "Value"))
 	static float SpringDamperFloat(UPARAM(ref) FLlsSpringFloatState& SpringState, float Current, float Target,
 	                               float DeltaTime, float Frequency, float DampingRatio, float TargetVelocityAmount = 1.0f);
+
+	UFUNCTION(BlueprintPure, Category = "Lls|Math Utility", Meta = (ReturnDisplayName = "Direction"))
+	static ELlsMovementDirection CalculateMovementDirection(float Angle, float ForwardHalfAngle, float AngleThreshold);								   
 
 	/// Calculates the projection location and direction of the perpendicular to AC through B.
 	UFUNCTION(BlueprintCallable, Category = "Lls|Math Utility",

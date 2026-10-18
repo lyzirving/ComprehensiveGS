@@ -1,8 +1,11 @@
 #include "LlsAnimationInstance.h"
+#include "CoreGlobals.h"
 #include "LlsCharacter.h"
 #include "LlsCharacterMovementComponent.h"
 #include "LlsAnimationInstanceProxy.h"
 
+#include "Logging/LogMacros.h"
+#include "Logging/LogVerbosity.h"
 #include "Utility/LlsConstants.h"
 #include "Utility/LlsMath.h"
 #include "Utility/LlsGameplayTags.h"
@@ -127,6 +130,9 @@ void ULlsAnimationInstance::NativeThreadSafeUpdateAnimation(float DeltaTime)
 
 	RefreshPose();
 	RefreshStandingMovement();
+	RefreshGroundedMovement();
+
+	RefreshGrounded();
 }
 
 void ULlsAnimationInstance::NativePostUpdateAnimation()
@@ -273,6 +279,112 @@ void ULlsAnimationInstance::RefreshStandingMovement()
 		                                         : GetAccelerationAmount().X;
 }
 
+void ULlsAnimationInstance::RefreshGroundedMovement()
+{
+	if (!IsValid(Settings))
+	{
+		return;
+	}
+
+	GroundedState.HipsDirectionLockAmount = FMath::Clamp(GetCurveValue(ULlsConstants::HipsDirectionLockCurveName()), -1.0f, 1.0f);
+
+	const auto VelocityYawAngleViewSpace{
+		FMath::UnwindDegrees(UE_REAL_TO_FLOAT(LocomotionState.VelocityYawAngleWorldSpace - ViewState.RotationWorldSpace.Yaw))
+	};
+
+	RefreshMovementDirection(VelocityYawAngleViewSpace);
+}
+
+void ULlsAnimationInstance::RefreshMovementDirection(float VelocityYawAngleViewSpace)
+{
+	// Calculate the movement direction. This value represents the direction in which the character is moving relative to the camera
+	// in view direction and aiming rotation modes. It used in cycle blending to transition to the appropriate directional state.
+
+	if (RotationMode == LlsRotationModeTags::VelocityDirection || Gait == LlsGaitTags::Sprinting)
+	{
+		GroundedState.MovementDirection = ELlsMovementDirection::Forward;
+		return;
+	}
+
+	static constexpr auto ForwardHalfAngle{70.0f};
+	static constexpr auto AngleThreshold{5.0f};
+
+	GroundedState.MovementDirection = ULlsMath::CalculateMovementDirection(VelocityYawAngleViewSpace, ForwardHalfAngle, AngleThreshold);
+	UE_LOG(LogTemp, Display, TEXT("bForward %d, bBackward %d, bLeft %d, bRight %d"),
+		GroundedState.MovementDirection.bForward, 
+		GroundedState.MovementDirection.bBackward,
+		GroundedState.MovementDirection.bLeft, 
+		GroundedState.MovementDirection.bRight);
+	UE_LOG(LogTemp, Display, TEXT("ForwardAmount %f, BackwardAmount %f, LeftAmount %f, RightAmount %f"),
+		GroundedState.VelocityBlend.ForwardAmount, 
+		GroundedState.VelocityBlend.BackwardAmount,
+		GroundedState.VelocityBlend.LeftAmount, 
+		GroundedState.VelocityBlend.RightAmount);	
+}
+
+void ULlsAnimationInstance::RefreshGrounded()
+{
+	if (!IsValid(Settings))
+	{
+		return;
+	}
+
+	RefreshVelocityBlend();
+}
+
+void ULlsAnimationInstance::RefreshVelocityBlend()
+{
+	// Calculate and interpolate the velocity blend amounts. This value represents the velocity amount of
+	// the character in each direction (normalized so that diagonals equal 0.5 for each direction) and is
+	// used in a blend multi node to produce better directional blending than a standard blend space.
+
+	auto& VelocityBlend{GroundedState.VelocityBlend};
+
+	auto VelocityDirection{GetVelocity()};
+	auto TargetVelocityBlend{FVector3f::ZeroVector};
+
+	if (VelocityDirection.Normalize())
+	{
+		TargetVelocityBlend = VelocityDirection /
+		                      (FMath::Abs(VelocityDirection.X) + FMath::Abs(VelocityDirection.Y) + FMath::Abs(VelocityDirection.Z));
+	}
+
+	if (VelocityBlend.bInitializationRequired || Settings->Grounded.VelocityBlendInterpolationHalfLife <= 0.0f)
+	{
+		VelocityBlend.bInitializationRequired = false;
+
+		VelocityBlend.ForwardAmount = ULlsMath::Clamp01(TargetVelocityBlend.X);
+		VelocityBlend.BackwardAmount = FMath::Abs(FMath::Clamp(TargetVelocityBlend.X, -1.0f, 0.0f));
+		VelocityBlend.LeftAmount = FMath::Abs(FMath::Clamp(TargetVelocityBlend.Y, -1.0f, 0.0f));
+		VelocityBlend.RightAmount = ULlsMath::Clamp01(TargetVelocityBlend.Y);
+	}
+	else
+	{
+		// We use ULlsMath::DamperExact() instead of FMath::FInterpTo(), because FMath::FInterpTo() is very sensitive to large
+		// delta time, at low FPS interpolation becomes almost instant which causes issues with character pose during the stop.
+
+		const auto InterpolationAmount{
+			ULlsMath::DamperExactAlpha(GetDeltaSeconds(), Settings->Grounded.VelocityBlendInterpolationHalfLife)
+		};
+
+		VelocityBlend.ForwardAmount = FMath::Lerp(VelocityBlend.ForwardAmount,
+		                                          ULlsMath::Clamp01(TargetVelocityBlend.X),
+		                                          InterpolationAmount);
+
+		VelocityBlend.BackwardAmount = FMath::Lerp(VelocityBlend.BackwardAmount,
+		                                           FMath::Abs(FMath::Clamp(TargetVelocityBlend.X, -1.0f, 0.0f)),
+		                                           InterpolationAmount);
+
+		VelocityBlend.LeftAmount = FMath::Lerp(VelocityBlend.LeftAmount,
+		                                       FMath::Abs(FMath::Clamp(TargetVelocityBlend.Y, -1.0f, 0.0f)),
+		                                       InterpolationAmount);
+
+		VelocityBlend.RightAmount = FMath::Lerp(VelocityBlend.RightAmount,
+		                                        ULlsMath::Clamp01(TargetVelocityBlend.Y),
+		                                        InterpolationAmount);
+	}
+}
+
 FVector2f ULlsAnimationInstance::GetAccelerationAmount() const
 {
 	// This value represents the current acceleration / deceleration. It is normalized to a range of -1 to 1, where
@@ -292,4 +404,9 @@ FVector2f ULlsAnimationInstance::GetAccelerationAmount() const
 	const FVector3f Acceleration{LocomotionState.RotationQuaternionWorldSpace.UnrotateVector(LocomotionState.AccelerationWorldSpace)};
 
 	return FVector2f{UVectorExtension::ClampMagnitude01(Acceleration / MaxAcceleration)};
+}
+
+FVector3f ULlsAnimationInstance::GetVelocity() const
+{
+	return FVector3f{LocomotionState.RotationQuaternionWorldSpace.UnrotateVector(LocomotionState.VelocityWorldSpace)};
 }
