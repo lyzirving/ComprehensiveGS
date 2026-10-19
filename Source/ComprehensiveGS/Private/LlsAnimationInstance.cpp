@@ -131,6 +131,7 @@ void ULlsAnimationInstance::NativeThreadSafeUpdateAnimation(float DeltaTime)
 	RefreshPose();
 	RefreshStandingMovement();
 	RefreshGroundedMovement();
+	RefreshFeet(DeltaTime);
 
 	RefreshGrounded();
 }
@@ -319,7 +320,10 @@ void ULlsAnimationInstance::RefreshMovementDirection(float VelocityYawAngleViewS
 		GroundedState.VelocityBlend.ForwardAmount, 
 		GroundedState.VelocityBlend.BackwardAmount,
 		GroundedState.VelocityBlend.LeftAmount, 
-		GroundedState.VelocityBlend.RightAmount);	
+		GroundedState.VelocityBlend.RightAmount);
+	UE_LOG(LogTemp, Display, TEXT("HipsDirectionLockAmount %f, FeetState.FeetCrossingAmount %f"), 
+		GroundedState.HipsDirectionLockAmount,
+		FeetState.FeetCrossingAmount);	
 }
 
 void ULlsAnimationInstance::RefreshGrounded()
@@ -383,6 +387,12 @@ void ULlsAnimationInstance::RefreshVelocityBlend()
 		                                        ULlsMath::Clamp01(TargetVelocityBlend.Y),
 		                                        InterpolationAmount);
 	}
+}
+
+void ULlsAnimationInstance::RefreshFeet(float DeltaTime)
+{
+	FeetState.FootPlantedAmount = FMath::Clamp(GetCurveValue(ULlsConstants::FootPlantedCurveName()), -1.0f, 1.0f);
+	FeetState.FeetCrossingAmount = FMath::Clamp(GetCurveValue(ULlsConstants::FeetCrossingCurveName()), 0.0f, 1.0f);	
 }
 
 FVector2f ULlsAnimationInstance::GetAccelerationAmount() const

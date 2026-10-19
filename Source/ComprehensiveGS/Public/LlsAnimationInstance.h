@@ -9,6 +9,7 @@
 #include "State/LlsStandingState.h"
 #include "State/LlsMovementBaseState.h"
 #include "State/LlsGroundedState.h"
+#include "State/LlsFeetState.h"
 #include "Utility/LlsGameplayTags.h"
 
 #include "LlsAnimationInstance.generated.h"
@@ -55,6 +56,9 @@ protected:
 	FLlsStandingState StandingState;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
+	FLlsFeetState FeetState;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
 	FGameplayTag RotationMode{LlsRotationModeTags::ViewDirection};
 
 	// The gait the character is *actually* in, derived from the real movement speed.
@@ -85,6 +89,8 @@ private:
 	void RefreshGrounded();
 
 	void RefreshVelocityBlend();
+
+	void RefreshFeet(float DeltaTime);
 
 	FVector2f GetAccelerationAmount() const;
 
