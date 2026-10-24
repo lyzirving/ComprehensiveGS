@@ -58,6 +58,7 @@ struct COMPREHENSIVEGS_API FLlsFeetState
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lls", Meta = (ClampMin = -1, ClampMax = 1))
 	float FootPlantedAmount{0.0f};
 
+	// when value is 1.0, it means the feet are crossed.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lls", Meta = (ClampMin = 0, ClampMax = 1))
 	float FeetCrossingAmount{0.0f};
 
