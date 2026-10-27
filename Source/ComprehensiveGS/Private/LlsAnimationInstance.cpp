@@ -310,20 +310,7 @@ void ULlsAnimationInstance::RefreshMovementDirection(float VelocityYawAngleViewS
 	static constexpr auto ForwardHalfAngle{70.0f};
 	static constexpr auto AngleThreshold{5.0f};
 
-	GroundedState.MovementDirection = ULlsMath::CalculateMovementDirection(VelocityYawAngleViewSpace, ForwardHalfAngle, AngleThreshold);
-	UE_LOG(LogTemp, Display, TEXT("bForward %d, bBackward %d, bLeft %d, bRight %d"),
-		GroundedState.MovementDirection.bForward, 
-		GroundedState.MovementDirection.bBackward,
-		GroundedState.MovementDirection.bLeft, 
-		GroundedState.MovementDirection.bRight);
-	UE_LOG(LogTemp, Display, TEXT("ForwardAmount %f, BackwardAmount %f, LeftAmount %f, RightAmount %f"),
-		GroundedState.VelocityBlend.ForwardAmount, 
-		GroundedState.VelocityBlend.BackwardAmount,
-		GroundedState.VelocityBlend.LeftAmount, 
-		GroundedState.VelocityBlend.RightAmount);
-	UE_LOG(LogTemp, Display, TEXT("HipsDirectionLockAmount %f, FeetState.FeetCrossingAmount %f"), 
-		GroundedState.HipsDirectionLockAmount,
-		FeetState.FeetCrossingAmount);	
+	GroundedState.MovementDirection = ULlsMath::CalculateMovementDirection(VelocityYawAngleViewSpace, ForwardHalfAngle, AngleThreshold);	
 }
 
 void ULlsAnimationInstance::RefreshGrounded()

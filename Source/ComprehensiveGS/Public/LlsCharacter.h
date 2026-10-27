@@ -66,16 +66,17 @@ protected:
 public:	
 	explicit ALlsCharacter(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+public:		
 	virtual void PreRegisterAllComponents() override;
 
 	virtual void PostInitializeComponents() override;	
+
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	virtual FRotator GetViewRotation() const override;
+
+	virtual void FaceRotation(FRotator Rotation, float DeltaTime) override final;
 
 protected:
 	// Called when the game starts or when spawned
@@ -94,8 +95,6 @@ public:
 	void SetDesiredGait(FGameplayTag NewDesiredGait);
 
 protected:
-	virtual void RefreshRotation(float DeltaTime);
-
 	virtual void NotifyRotationModeChanged(FGameplayTag PreviousRotationMode);
 
 protected:
@@ -104,18 +103,6 @@ protected:
 	void SetInputDirection(FVector NewInputDirection);
 
 	void SetRotationMode(FGameplayTag NewRotationMode);
-
-	void SetTargetYawAngle(float TargetYawAngle);
-
-	void SetTargetYawAngleSmooth(float TargetYawAngle, float DeltaTime, float RotationSpeed);
-
-	void SetRotationExtraSmooth(float TargetYawAngle, float DeltaTime, float InterpolationHalfLife, float TargetYawAngleRotationSpeed);
-
-	void RefreshTargetYawAngleViewSpace();
-
-	void RefreshTargetYawAngleUsingActorRotation();
-
-	float CalculateGroundedMovingRotationInterpolationHalfLife() const;
 
 	UFUNCTION(BlueprintNativeEvent, Category = "Lls Character")
 	void OnGaitChanged(FGameplayTag PreviousGait);
@@ -130,7 +117,6 @@ private:
 	void RefreshLocomotionLate();
 	void RefreshGait();
 	void RefreshView(float DeltaTime);
-	void RefreshGroundedRotation(float DeltaTime);
 
 	FGameplayTag CalculateMaxAllowedGait() const;
 

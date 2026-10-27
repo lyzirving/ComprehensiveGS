@@ -1,4 +1,5 @@
 #include "LlsCharacterInstance.h"
+#include "CoreGlobals.h"
 #include "Logging/LogMacros.h"
 #include "Logging/LogVerbosity.h"
 #include "Utility/VectorExtension.h"
@@ -24,6 +25,8 @@ void ALlsCharacterInstance::SetupPlayerInputComponent(UInputComponent* Input)
 	{
 		EnhancedInput->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ALlsCharacterInstance::Input_OnMove);
 		EnhancedInput->BindAction(MoveAction, ETriggerEvent::Canceled, this, &ALlsCharacterInstance::Input_OnMove);
+		EnhancedInput->BindAction(LookMouseAction, ETriggerEvent::Triggered, this, &ALlsCharacterInstance::Input_OnLookMouse);
+		EnhancedInput->BindAction(LookMouseAction, ETriggerEvent::Canceled, this, &ALlsCharacterInstance::Input_OnLookMouse);
 		EnhancedInput->BindAction(SprintAction, ETriggerEvent::Triggered, this, &ALlsCharacterInstance::Input_OnSprint);
 		EnhancedInput->BindAction(SprintAction, ETriggerEvent::Canceled, this, &ALlsCharacterInstance::Input_OnSprint);
 	}
@@ -72,4 +75,10 @@ void ALlsCharacterInstance::Input_OnMove(const FInputActionValue& ActionValue)
 void ALlsCharacterInstance::Input_OnSprint(const FInputActionValue& ActionValue)
 {
 	SetDesiredGait(ActionValue.Get<bool>() ? LlsGaitTags::Sprinting : LlsGaitTags::Running);
+}
+
+void ALlsCharacterInstance::Input_OnLookMouse(const FInputActionValue &ActionValue)
+{
+	const FVector2f Value{ActionValue.Get<FVector2D>()};
+	AddControllerYawInput(Value.X * LookRightMouseSensitivity);
 }

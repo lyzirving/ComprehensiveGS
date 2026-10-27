@@ -20,9 +20,18 @@ protected:
  
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings|Lls Character|Input")
     TObjectPtr<UInputAction> MoveAction;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings|Lls Character|Input")
+	TObjectPtr<UInputAction> LookMouseAction;
  
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings|Lls Character|Input")
     TObjectPtr<UInputAction> SprintAction;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Settings|Lls Character|Input", Meta = (ClampMin = 0, ForceUnits = "x"))
+	float LookUpMouseSensitivity{1.0f};
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Settings|Lls Character|Input", Meta = (ClampMin = 0, ForceUnits = "x"))
+	float LookRightMouseSensitivity{1.0f};
 
 public:	
 	explicit ALlsCharacterInstance(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
@@ -38,4 +47,5 @@ private:
 
     void Input_OnMove(const FInputActionValue& Value);
 	void Input_OnSprint(const FInputActionValue& Value);
+    void Input_OnLookMouse(const FInputActionValue& ActionValue);
 };
