@@ -9,46 +9,46 @@ class COMPREHENSIVEGS_API UVectorExtension : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", Meta = (AutoCreateRefTerm = "Vector", ReturnDisplayName = "Vector"))
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", Meta = (AutoCreateRefTerm = "Vector", ReturnDisplayName = "Vector"))
 	static FVector ClampMagnitude01(const FVector& Vector);
 
 	static FVector3f ClampMagnitude01(FVector3f Vector);
 
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", DisplayName = "Clamp Magnitude 01 2D", Meta = (ReturnDisplayName = "Vector"))
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", DisplayName = "Clamp Magnitude 01 2D", Meta = (ReturnDisplayName = "Vector"))
 	static FVector2D ClampMagnitude012D(FVector2D Vector);
 
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", Meta = (ReturnDisplayName = "Direction"))
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", Meta = (ReturnDisplayName = "Direction"))
 	static FVector2D RadianToDirection(float Radian);
 
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", Meta = (ReturnDisplayName = "Direction"))
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", Meta = (ReturnDisplayName = "Direction"))
 	static FVector RadianToDirectionXY(float Radian);
 
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", Meta = (ReturnDisplayName = "Direction"))
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", Meta = (ReturnDisplayName = "Direction"))
 	static FVector2D AngleToDirection(float Angle);
 
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", Meta = (ReturnDisplayName = "Direction"))
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", Meta = (ReturnDisplayName = "Direction"))
 	static FVector AngleToDirectionXY(float Angle);
 
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", Meta = (AutoCreateRefTerm = "Direction", ReturnDisplayName = "Angle"))
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", Meta = (AutoCreateRefTerm = "Direction", ReturnDisplayName = "Angle"))
 	static double DirectionToAngle(FVector2D Direction);
 
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", Meta = (AutoCreateRefTerm = "Direction", ReturnDisplayName = "Angle"))
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", Meta = (AutoCreateRefTerm = "Direction", ReturnDisplayName = "Angle"))
 	static double DirectionToAngleXY(const FVector& Direction);
 
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", Meta = (AutoCreateRefTerm = "Vector", ReturnDisplayName = "Vector"))
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", Meta = (AutoCreateRefTerm = "Vector", ReturnDisplayName = "Vector"))
 	static FVector PerpendicularClockwiseXY(const FVector& Vector);
 
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", Meta = (AutoCreateRefTerm = "Vector", ReturnDisplayName = "Vector"))
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", Meta = (AutoCreateRefTerm = "Vector", ReturnDisplayName = "Vector"))
 	static FVector PerpendicularCounterClockwiseXY(const FVector& Vector);
 
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", DisplayName = "Angle Between (Skip Normalization)",
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", DisplayName = "Angle Between (Skip Normalization)",
 		Meta = (AutoCreateRefTerm = "From, To", ReturnDisplayName = "Angle"))
 	static double AngleBetweenSkipNormalization(const FVector& From, const FVector& To);
 
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", Meta = (ReturnDisplayName = "Angle"))
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", Meta = (ReturnDisplayName = "Angle"))
 	static float AngleBetweenSignedXY(FVector3f From, FVector3f To);
 
-	UFUNCTION(BlueprintPure, Category = "ALS|Vector Utility", DisplayName = "Slerp (Skip Normalization)",
+	UFUNCTION(BlueprintPure, Category = "Lls|Vector Utility", DisplayName = "Slerp (Skip Normalization)",
 		Meta = (AutoCreateRefTerm = "From, To", ReturnDisplayName = "Direction"))
 	static FVector SlerpSkipNormalization(const FVector& From, const FVector& To, float Ratio);
 };

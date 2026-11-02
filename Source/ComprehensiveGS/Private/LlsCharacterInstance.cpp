@@ -65,11 +65,21 @@ void ALlsCharacterInstance::RegisterInputMappingContext()
 
 void ALlsCharacterInstance::Input_OnMove(const FInputActionValue& ActionValue)
 {
-	const FVector2D InputVector = ActionValue.Get<FVector2D>();
-	SetInputDirection(FVector(InputVector.X, InputVector.Y, 0.0f));	
+	const auto Value = UVectorExtension::ClampMagnitude012D(ActionValue.Get<FVector2D>());
 
-	LocomotionState.bHasInput = !InputDirection.IsNearlyZero();
-	AddMovementInput(InputDirection, 1.0f, false);
+	auto ViewRotation{GetViewState().Rotation};
+
+	if (IsValid(GetController()))
+	{
+		// Use exact camera rotation instead of target rotation whenever possible.
+		FVector ViewLocation;
+		GetController()->GetPlayerViewPoint(ViewLocation, ViewRotation);
+	}
+
+	const auto ForwardDirection{UVectorExtension::AngleToDirectionXY(UE_REAL_TO_FLOAT(ViewRotation.Yaw))};
+	const auto RightDirection{UVectorExtension::PerpendicularCounterClockwiseXY(ForwardDirection)};
+	
+	AddMovementInput(ForwardDirection * Value.X + RightDirection * Value.Y);
 }
 
 void ALlsCharacterInstance::Input_OnSprint(const FInputActionValue& ActionValue)

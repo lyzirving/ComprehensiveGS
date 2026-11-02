@@ -97,12 +97,23 @@ public:
 protected:
 	virtual void NotifyRotationModeChanged(FGameplayTag PreviousRotationMode);
 
+	virtual void RefreshInput(float DeltaTime);
+
+	/// Refresh rotation according to the current locomotion mode.
+	virtual void RefreshRotation(float DeltaTime);
+
 protected:
 	void SetGait(FGameplayTag NewGait);
 
 	void SetInputDirection(FVector NewInputDirection);
 
 	void SetRotationMode(FGameplayTag NewRotationMode);
+
+	void SetRotationSmooth(float TargetYawAngle, float DeltaTime, float InterpolationHalfLife);
+
+	void SetRotationExtraSmooth(float TargetYawAngle, float DeltaTime, float InterpolationHalfLife, float TargetYawAngleRotationSpeed);
+
+	void SetTargetYawAngleSmooth(float TargetYawAngle, float DeltaTime, float RotationSpeed);
 
 	UFUNCTION(BlueprintNativeEvent, Category = "Lls Character")
 	void OnGaitChanged(FGameplayTag PreviousGait);
@@ -117,12 +128,19 @@ private:
 	void RefreshLocomotionLate();
 	void RefreshGait();
 	void RefreshView(float DeltaTime);
+	void RefreshGroundedRotation(float DeltaTime);
 
 	FGameplayTag CalculateMaxAllowedGait() const;
 
 	FGameplayTag CalculateActualGait(FGameplayTag MaxAllowedGait) const;
 
 	bool CanSprint() const;	
+
+	void ApplyRotationYawSpeedAnimationCurve(float DeltaTime);
+	void RefreshTargetYawAngleUsingActorRotation();
+	void SetTargetYawAngle(float TargetYawAngle);
+	void RefreshTargetYawAngleViewSpace();
+	float CalculateGroundedMovingRotationInterpolationHalfLife() const;
 };
 
 inline FGameplayTag ALlsCharacter::GetRotationMode() const
