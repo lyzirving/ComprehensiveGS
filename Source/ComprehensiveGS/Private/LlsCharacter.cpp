@@ -252,7 +252,7 @@ void ALlsCharacter::RefreshGroundedRotation(float DeltaTime)
 	{
 		// Not moving.
 
-		ApplyRotationYawSpeedAnimationCurve(DeltaTime);\
+		ApplyRotationYawSpeedAnimationCurve(DeltaTime);
 
 		if (RotationMode == LlsRotationModeTags::ViewDirection)
 		{
