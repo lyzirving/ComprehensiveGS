@@ -31,6 +31,7 @@ struct COMPREHENSIVEGS_API FLlsLocomotionState
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lls")
 	uint8 bRotationTowardsLastInputDirectionBlocked : 1 {true};
 
+	// The direction the character’s body ultimately seeks to move toward.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lls", Meta = (ClampMin = -180, ClampMax = 180, ForceUnits = "deg"))
 	float TargetYawAngle{0.0f};
 

@@ -30,6 +30,11 @@
 LLS_DEFINE_PRIVATE_MEMBER_ACCESSOR(LlsGetAnimationCurvesAccessor, &FAnimInstanceProxy::GetAnimationCurves,
                                    const TMap<FName, float>& (FAnimInstanceProxy::*)(EAnimCurveType) const)
 
+FAnimInstanceProxy* ULlsAnimationInstance::CreateAnimInstanceProxy()
+{
+	return new FLlsAnimationInstanceProxy(this);
+}
+
 void ULlsAnimationInstance::NativeInitializeAnimation()
 {
     Super::NativeInitializeAnimation();
@@ -48,7 +53,17 @@ void ULlsAnimationInstance::NativeUpdateAnimation(float DeltaTime)
 
     Gait = Character->GetGait();
 
+	RefreshViewOnGameThread();
     RefreshLocomotionOnGameThread();
+}
+
+void ULlsAnimationInstance::RefreshViewOnGameThread()
+{
+	check(IsInGameThread());
+	const auto& View = Character->GetViewState();
+
+	ViewState.RotationWorldSpace = View.Rotation;
+	ViewState.YawSpeed = View.YawSpeed;
 }
 
 void ULlsAnimationInstance::RefreshLocomotionOnGameThread()
@@ -137,7 +152,16 @@ void ULlsAnimationInstance::NativeThreadSafeUpdateAnimation(float DeltaTime)
 }
 
 void ULlsAnimationInstance::NativePostUpdateAnimation()
-{
+{	
+	if (!IsValid(Settings) || !IsValid(Character))
+	{
+		return;
+	}	
+
+	// Reset bPendingUpdate only when all components have been registered to
+	// ensure that all data the animation instance depends on is up to date.
+
+	bPendingUpdate = !Character->HasActorRegisteredAllComponents();
 }
 
 void ULlsAnimationInstance::RefreshPose()
@@ -294,6 +318,7 @@ void ULlsAnimationInstance::RefreshGroundedMovement()
 	};
 
 	RefreshMovementDirection(VelocityYawAngleViewSpace);
+	RefreshRotationYawOffsets(VelocityYawAngleViewSpace);
 }
 
 void ULlsAnimationInstance::RefreshMovementDirection(float VelocityYawAngleViewSpace)
@@ -313,6 +338,19 @@ void ULlsAnimationInstance::RefreshMovementDirection(float VelocityYawAngleViewS
 	GroundedState.MovementDirection = ULlsMath::CalculateMovementDirection(VelocityYawAngleViewSpace, ForwardHalfAngle, AngleThreshold);	
 }
 
+void ULlsAnimationInstance::RefreshRotationYawOffsets(float VelocityYawAngleViewSpace)
+{
+	// Rotation yaw offsets influence the rotation yaw offset curve in the animation graph. It is used to offset the character's
+	// rotation, creating more natural movement. These curves enable precise control of the offset for each movement direction.
+	
+	auto& RotationYawOffsets{GroundedState.RotationYawOffsets};
+
+	RotationYawOffsets.ForwardAngle = Settings->Grounded.RotationYawOffsetForwardCurve->GetFloatValue(VelocityYawAngleViewSpace);
+	RotationYawOffsets.BackwardAngle = Settings->Grounded.RotationYawOffsetBackwardCurve->GetFloatValue(VelocityYawAngleViewSpace);
+	RotationYawOffsets.LeftAngle = Settings->Grounded.RotationYawOffsetLeftCurve->GetFloatValue(VelocityYawAngleViewSpace);
+	RotationYawOffsets.RightAngle = Settings->Grounded.RotationYawOffsetRightCurve->GetFloatValue(VelocityYawAngleViewSpace);
+}
+
 void ULlsAnimationInstance::RefreshGrounded()
 {
 	if (!IsValid(Settings))
@@ -321,6 +359,25 @@ void ULlsAnimationInstance::RefreshGrounded()
 	}
 
 	RefreshVelocityBlend();
+	RefreshGroundedLean();
+}
+
+void ULlsAnimationInstance::RefreshGroundedLean()
+{
+	const auto TargetLeanAmount{GetAccelerationAmount()};
+
+	if (bPendingUpdate || Settings->General.LeanInterpolationHalfLife <= 0.0f)
+	{
+		LeanState.RightAmount = TargetLeanAmount.Y;
+		LeanState.ForwardAmount = TargetLeanAmount.X;
+	}
+	else
+	{
+		const auto InterpolationAmount{ULlsMath::DamperExactAlpha(GetDeltaSeconds(), Settings->General.LeanInterpolationHalfLife)};
+
+		LeanState.RightAmount = FMath::Lerp(LeanState.RightAmount, TargetLeanAmount.Y, InterpolationAmount);
+		LeanState.ForwardAmount = FMath::Lerp(LeanState.ForwardAmount, TargetLeanAmount.X, InterpolationAmount);
+	}	
 }
 
 void ULlsAnimationInstance::RefreshVelocityBlend()
@@ -387,7 +444,9 @@ FVector2f ULlsAnimationInstance::GetAccelerationAmount() const
 	// This value represents the current acceleration / deceleration. It is normalized to a range of -1 to 1, where
 	// -1 equals max braking deceleration and 1 equals max acceleration from the character movement component.
 
-	const auto MaxAcceleration{
+	// MaxAcceleration is float
+	const auto MaxAcceleration {
+		// '|' is dot operation		
 		(LocomotionState.AccelerationWorldSpace | LocomotionState.VelocityWorldSpace) >= 0.0f
 			? LocomotionState.MaxAcceleration
 			: LocomotionState.MaxBrakingDeceleration

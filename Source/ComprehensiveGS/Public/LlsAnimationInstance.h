@@ -10,6 +10,7 @@
 #include "State/LlsMovementBaseState.h"
 #include "State/LlsGroundedState.h"
 #include "State/LlsFeetState.h"
+#include "State/LlsLeanState.h"
 #include "Utility/LlsGameplayTags.h"
 
 #include "LlsAnimationInstance.generated.h"
@@ -41,6 +42,9 @@ protected:
 	FLlsLocomotionAnimationState LocomotionState;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
+	FLlsLeanState LeanState;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
 	FLlsViewAnimationState ViewState;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State", Transient)
@@ -67,6 +71,8 @@ protected:
 	FGameplayTag Gait{LlsGaitTags::Walking};
 
 public:
+	virtual FAnimInstanceProxy* CreateAnimInstanceProxy() override;
+	
 	virtual void NativeInitializeAnimation() override;
 
 	virtual void NativeUpdateAnimation(float DeltaTime) override;
@@ -76,6 +82,8 @@ public:
 	virtual void NativePostUpdateAnimation();
 
 private:	
+	void RefreshViewOnGameThread();
+
 	void RefreshLocomotionOnGameThread();
 
 	void RefreshPose();
@@ -86,9 +94,13 @@ private:
 
 	void RefreshMovementDirection(float VelocityYawAngleViewSpace);
 
+	void RefreshRotationYawOffsets(float VelocityYawAngleViewSpace);
+
 	void RefreshGrounded();
 
 	void RefreshVelocityBlend();
+
+	void RefreshGroundedLean();
 
 	void RefreshFeet(float DeltaTime);
 

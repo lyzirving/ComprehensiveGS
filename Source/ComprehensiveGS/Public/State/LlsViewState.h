@@ -40,6 +40,7 @@ struct COMPREHENSIVEGS_API FLlsViewState
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lls")
 	FLlsViewNetworkSmoothingState NetworkSmoothing;
 
+	// The current rotation of the view / camera.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lls")
 	FRotator Rotation{ForceInit};
 

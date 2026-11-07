@@ -44,8 +44,10 @@ void ALlsCharacter::BeginPlay()
 void ALlsCharacter::PreRegisterAllComponents()
 {
 	ViewState.Rotation = Super::GetViewRotation();
+	ViewState.PreviousYawAngle = UE_REAL_TO_FLOAT(ViewState.Rotation.Yaw);
 
-	const auto YawAngle{UE_REAL_TO_FLOAT(ViewState.Rotation.Yaw)};
+	const auto YawAngle{UE_REAL_TO_FLOAT(GetActorRotation().Yaw)};
+	SetTargetYawAngle(YawAngle);
 	LocomotionState.InputYawAngle = YawAngle;
 	LocomotionState.VelocityYawAngle = YawAngle;
 
@@ -54,6 +56,9 @@ void ALlsCharacter::PreRegisterAllComponents()
 
 void ALlsCharacter::PostInitializeComponents()
 {
+	// Make sure the mesh and animation blueprint are ticking after the character so they can access the most up-to-date character state.
+	GetMesh()->AddTickPrerequisiteActor(this);
+
 	AnimationInstance = Cast<ULlsAnimationInstance>(GetMesh()->GetAnimInstance());
 
 	Super::PostInitializeComponents();
@@ -236,9 +241,23 @@ void ALlsCharacter::RefreshView(float DeltaTime)
 		ViewState.Rotation.Normalize();
 	}
 
+	ViewState.PreviousYawAngle = UE_REAL_TO_FLOAT(ViewState.Rotation.Yaw);
+
 	ViewState.Rotation = MovementBase.bHasRelativeRotation ? 
 					(MovementBase.Rotation.Inverse() * Super::GetViewRotation().Quaternion()).Rotator() :
 						Super::GetViewRotation().GetNormalized();
+
+	if (DeltaTime > UE_SMALL_NUMBER)
+	{
+		const auto DeltaYawAngle{
+        	FMath::UnwindDegrees(UE_REAL_TO_FLOAT(ViewState.Rotation.Yaw - ViewState.PreviousYawAngle))
+        };
+		ViewState.YawSpeed = FMath::Abs(DeltaYawAngle) / DeltaTime;
+	}
+	else
+	{
+    	ViewState.YawSpeed = 0.0f;
+	}
 }
 
 void ALlsCharacter::RefreshGroundedRotation(float DeltaTime)
@@ -248,65 +267,48 @@ void ALlsCharacter::RefreshGroundedRotation(float DeltaTime)
 		return;
 	}
 
+	if (RotationMode != LlsRotationModeTags::ViewDirection)
+    {
+        RefreshTargetYawAngleUsingActorRotation();
+        return;
+    }
+
+	static constexpr auto RotationInterpolationHalfLife{0.2f};
+    static constexpr auto TargetYawAngleRotationSpeed{500.0f};
+
 	if (!LocomotionState.bMoving)
 	{
 		// Not moving.
 
-		ApplyRotationYawSpeedAnimationCurve(DeltaTime);
-
-		if (RotationMode == LlsRotationModeTags::ViewDirection)
-		{
-			if ((!LocomotionState.bHasInput && LocomotionState.bRotationTowardsLastInputDirectionBlocked) ||
-			    !Settings->bAutoRotateOnAnyInputWhileNotMovingInViewDirectionRotationMode)
-			{
-				RefreshTargetYawAngleUsingActorRotation();
-				return;
-			}
-
-			// Rotate to the last view direction.
-
-			const auto TargetYawAngle{
-				LocomotionState.bHasInput ? UE_REAL_TO_FLOAT(ViewState.Rotation.Yaw) : LocomotionState.TargetYawAngle
-			};
-
-			const auto RotationInterpolationHalfLife{CalculateGroundedMovingRotationInterpolationHalfLife()};
-
-			static constexpr auto TargetYawAngleRotationSpeed{500.0f};
-
-			SetRotationExtraSmooth(TargetYawAngle, DeltaTime, RotationInterpolationHalfLife, TargetYawAngleRotationSpeed);
+		if ((!LocomotionState.bHasInput && LocomotionState.bRotationTowardsLastInputDirectionBlocked) ||
+			 !Settings->bAutoRotateOnAnyInputWhileNotMovingInViewDirectionRotationMode)
+		{			
+			RefreshTargetYawAngleUsingActorRotation();
 			return;
 		}
+
+		// Rotate to the last view direction.
+		const auto TargetYawAngle{
+			LocomotionState.bHasInput ? UE_REAL_TO_FLOAT(ViewState.Rotation.Yaw) : LocomotionState.TargetYawAngle
+		};			
+
+		SetRotationExtraSmooth(TargetYawAngle, 
+			DeltaTime, 
+			RotationInterpolationHalfLife, 
+			TargetYawAngleRotationSpeed);
 		return;
 	}
 
 	// Moving.
+	LocomotionState.bRotationTowardsLastInputDirectionBlocked = false;
 
-	if (RotationMode == LlsRotationModeTags::ViewDirection &&
-	    (LocomotionState.bHasInput || !LocomotionState.bRotationTowardsLastInputDirectionBlocked))
-	{
-		LocomotionState.bRotationTowardsLastInputDirectionBlocked = false;
-
-		float TargetYawAngle;
-
-		if (Gait ==LlsGaitTags::Sprinting)
-		{
-			TargetYawAngle = LocomotionState.VelocityYawAngle;
-		}
-		else
-		{
-			TargetYawAngle = UE_REAL_TO_FLOAT(
+	const auto TargetYawAngle = UE_REAL_TO_FLOAT(
 				ViewState.Rotation.Yaw + GetMesh()->GetAnimInstance()->GetCurveValue(ULlsConstants::RotationYawOffsetCurveName()));
-		}
 
-		const auto RotationInterpolationHalfLife{CalculateGroundedMovingRotationInterpolationHalfLife()};
-
-		static constexpr auto TargetYawAngleRotationSpeed{500.0f};
-
-		SetRotationExtraSmooth(TargetYawAngle, DeltaTime, RotationInterpolationHalfLife, TargetYawAngleRotationSpeed);
-		return;
-	}
-
-	RefreshTargetYawAngleUsingActorRotation();
+	SetRotationExtraSmooth(TargetYawAngle, 
+		DeltaTime, 
+		RotationInterpolationHalfLife, 
+		TargetYawAngleRotationSpeed);	
 }
 
 void ALlsCharacter::SetGait(FGameplayTag NewGait)
@@ -465,6 +467,7 @@ void ALlsCharacter::SetTargetYawAngle(float TargetYawAngle)
 
 void ALlsCharacter::RefreshTargetYawAngleViewSpace()
 {
+	// TargetYawAngleViewSpace is exactly view yaw's offset from target.
 	LocomotionState.TargetYawAngleViewSpace = FMath::UnwindDegrees(UE_REAL_TO_FLOAT(
 		ViewState.Rotation.Yaw - LocomotionState.TargetYawAngle));
 }
