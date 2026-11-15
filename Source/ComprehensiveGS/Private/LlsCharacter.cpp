@@ -61,12 +61,9 @@ void ALlsCharacter::PostInitializeComponents()
 
 	AnimationInstance = Cast<ULlsAnimationInstance>(GetMesh()->GetAnimInstance());
 
+	LlsCharacterMovement->SetMovementSettings(MovementSettings);
+
 	Super::PostInitializeComponents();
-	
-	if(IsValid(LlsCharacterMovement))
-	{
-		LlsCharacterMovement->UpdateMaxSpeed();
-	}
 }
 
 void ALlsCharacter::Tick(float DeltaTime)

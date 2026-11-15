@@ -60,6 +60,9 @@ public:
 	/// Range of velocity angles in view space at which speed interpolation occurs from forward to backward.
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings", Meta = (ClampMin = 0, ClampMax = 180, ForceUnits = "deg"))
 	FFloatInterval VelocityAngleToSpeedInterpolationRange{100.0f, 125.0f};
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings")
+	FLlsMovementGaitSettings GaitSettings;
 };
 
 inline float FLlsMovementGaitSettings::GetMaxWalkSpeed() const

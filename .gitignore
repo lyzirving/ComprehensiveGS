@@ -76,3 +76,4 @@ DerivedDataCache/*
 .vscode/
 
 .study/
+compile_commands.json

@@ -14,6 +14,7 @@
 class ULlsCharacterSettings;
 class ULlsCharacterMovementComponent;
 class ULlsAnimationInstance;
+class ULlsMovementSettings;
 
 UCLASS(ClassGroup = "Lls")
 class COMPREHENSIVEGS_API ALlsCharacter : public ACharacter
@@ -24,6 +25,9 @@ protected:
 	// **************************** Settings ****************************	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings|Lls Character")
 	TObjectPtr<ULlsCharacterSettings> Settings;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings|Lls Character")
+	TObjectPtr<ULlsMovementSettings> MovementSettings;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings|Lls Character|Desired State")
 	FGameplayTag DesiredGait{LlsGaitTags::Running};		
