@@ -7,6 +7,7 @@ struct COMPREHENSIVEGS_API FLlsPoseState
 {
 	GENERATED_BODY()
 
+	// 1 means totally on the ground, 0 means totally in the air.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Lls", Meta = (ClampMin = 0, ClampMax = 1))
 	float GroundedAmount{1.0f};
 
